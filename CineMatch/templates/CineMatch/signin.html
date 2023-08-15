@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<style>
+body {background-color: black; text-align:center;}
+h2   {font-family: "Tahoma"; color: ghostwhite; -webkit-text-stroke: 1px black;}
+label {font-family: "Tahoma"; color: ghostwhite;}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="">
+    <title>CineMatch</title>
+</head>
+<body>
+    <a href="https://ibb.co/HnYTQ71"><img src="https://i.ibb.co/bzL5n1q/drew-beamer-3-SIXZisims4-unsplash.jpg" alt="drew-beamer-3-SIXZisims4-unsplash" border="0"></a>
+    <h2>Sign In</h2>
+
+    <form action="signin" method="post">
+        {% csrf_token %}
+        <label for="">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter Username" required>
+        <br>
+
+        <label for="">Password</label>
+        <input type="password" id="pass1" name="pass1" placeholder="Enter Password" required>
+        <br>
+
+
+        <button type="submit">Sign In</button>
+    </form>
+    <script src="" async defer></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<style>
+body {background-color: black; padding-top: 550px;}
+h2   {font-family: "Tahoma"; color: ghostwhite; border: 2px solid mediumblue;}
+label {font-family: "Tahoma"; color: ghostwhite; margin-top: 100px;}
+img {position: absolute; margin-top: -560px; right:0px; width:1018px; height:550px;}
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="">
+    <title>CineMatch</title>
+</head>
+
+<body>
+    <a href="https://ibb.co/SXbMXyk"><img src="https://i.ibb.co/WWZMW5r/etienne-girardet-EP6-VZhz-XM8-unsplash.jpg" alt="etienne-girardet-EP6-VZhz-XM8-unsplash" border="0"></a>
+    <h2>Sign Up</h2>
+
+    <form action="signup" method="post">
+    {% csrf_token %}
+        <label for="">Username</label>
+        <input type="text" id="username" name="username" placeholder="Create a username (letters and numbers)" required>
+        <br>
+
+        <label for="">First Name</label>
+        <input type="text" id="fname" name="fname" placeholder="Enter First Name" required>
+        <br>
+
+        <label for="">Last Name</label>
+        <input type="text" id="lname" name="lname" placeholder="Enter Last Name" required>
+        <br>
+
+        <label for="">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter Email Address" required>
+        <br>
+
+        <label for="">Password</label>
+        <input type="password" id="pass1" name="pass1" placeholder="Create a Password" required>
+        <br>
+
+        <label for="">Confirm Password</label>
+        <input type="password" id="pass2" name="pass2" placeholder="Confirm Password" required>
+        <br>
+
+        <button type="submit">Sign Up</button>
+    </form>
+    <script src="" async defer></script>
+</body>
+</html>

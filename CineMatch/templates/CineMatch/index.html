@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<style>
+body {background-color: black; text-align:center; padding-top:70px; border: 2px solid red; border-radius: 25px; padding-bottom: 70px;}
+h1 {font-family: "Tahoma"; color: ghostwhite; -webkit-text-stroke: 1.5px black;}
+h3 {font-family: "Tahoma"; color: ghostwhite;}
+h4 {font-family: "Tahoma"; color: ghostwhite;}
+img {position: absolute; margin-left: -510px; bottom:0px; width:1150px; height:550px;}
+
+</style>
+    <meta charset="utf-8">
+    <title>CineMatch</title>
+</head>
+<body>
+    <a href="https://ibb.co/k4GTsSc"><img src="https://i.ibb.co/x12bt75/pexels-nathan-engel-436413.jpg" alt="pexels-nathan-engel-436413" border="0"></a>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message:</strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    {% endfor %}
+
+    <h1>Welcome to CineMatch!</h1>
+
+    {% if user.is_authenticated %}
+    <h3>Hello {{ fname }}</h3>
+    <h4>You've been successfully logged in.</h4>
+    <button type="submit"> <a href="{% url 'signout' %}"> Sign Out</a></button>
+    <button><a href="{% url 'search_results' %}">Continue</a></button>
+    <button><a href="{% url 'profile' %}">Profile</a></button>
+
+    {% else %}
+    <button type="submit"> <a href="{% url 'signup' %}"> Sign Up</a></button>
+    <button type="submit"> <a href="{% url 'signin' %}"> Sign In</a></button>
+    {% endif %}
+
+    <script src="" async defer></script>
+
+</body>
+</html>

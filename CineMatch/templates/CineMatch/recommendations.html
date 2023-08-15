@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<style>
+body {background-color: black; text-align:center;}
+h1, h2   {font-family: "Tahoma"; color: ghostwhite;}
+h2 {border-bottom: 2px solid blue; border-bottom-length:1000px; }
+p {font-family: "Tahoma"; color: ghostwhite;}
+</style>
+    <meta charset="utf-8">
+    <title>Movie Recommendations</title>
+</head>
+<body>
+    <h1>Your Movie Recommendations</h1>
+    <ul>
+        {% for movie in movies %}
+        <li>
+            <h2>{{ movie.title }}</h2>
+            <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="{{ movie.title }} Poster">
+            <p>Release Date: {{ movie.release_date }}</p>
+            <p>Rating: {{ movie.vote_average }}</p>
+            <p>Overview: {{ movie.overview }}</p>
+            {% if not movie.is_favorite %}
+            <form method="post" action="{% url 'add_to_favorite' movie.id movie.title %}">
+                {% csrf_token %}
+                <button type="submit">Add to Favorites</button>
+            </form>
+            {% else %}
+            <span>(Already in Favorites)</span>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'search_results' %}">Go Back to Search</a></p>
+</body>
+</html>

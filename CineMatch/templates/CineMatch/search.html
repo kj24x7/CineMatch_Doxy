@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<style>
+body {background-color: black;}
+h2   {font-family: "Tahoma"; color: ghostwhite; -webkit-text-stroke: .8px black;}
+img {position: absolute; margin-top: -30px; right:0px; width:500px; height:900px; border: 2px solid red;}
+</style>
+    <meta charset="utf-8">
+    <title>Movie Search</title>
+</head>
+<body>
+    <a href="https://ibb.co/px4gz0T"><img src="https://i.ibb.co/mGhmqDK/pexels-alexie-valix-12279444.jpg" alt="pexels-alexie-valix-12279444" border="0"></a>
+    <form method="GET" action="{% url 'recommendations' 'NO_ACTOR' 'NO_DIRECTOR' 'NO_GENRE' %}">
+        {% csrf_token %}
+        <h2>Choose a genre:</h2>
+        <select name="genre_select">
+            <option selected value="NO_PREFERENCE">No Preference</option>
+            <option value="27">Horror</option>
+            <option value="10749">Romance</option>
+            <option value="35">Comedy</option>
+            <option value="28">Action</option>
+            <option value="99">Documentary</option>
+        </select>
+
+        <h2>Search an Actor:</h2>
+        <input type="text" name="actor_select" placeholder="Enter actor name">
+        <br><br>
+
+        <h2>Search a Director:</h2>
+        <input type="text" name="director_select" placeholder="Enter director name">
+        <br><br>
+
+        <h2>Rating Preference:</h2>
+        <select name="rating_select">
+            <option value="LOWEST">Lowest First</option>
+            <option value="HIGHEST">Highest First</option>
+            <option selected value="NO_PREFERENCE">No Preference</option>
+        </select>
+        <br><br>
+
+        <input type="submit" value="Search">
+        <button><a href="{% url 'home' %}">Home</a></button>
+    </form>
+</body>
+</html>

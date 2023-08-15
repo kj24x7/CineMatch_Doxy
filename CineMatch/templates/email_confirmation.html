@@ -1,0 +1,11 @@
+{% autoescape off %}
+
+Welcome to CineMatch!
+
+Hello {{ name }}
+
+Please confirm your email address by clicking on the following link:
+
+http://{{ domain }}{% url "activate" uidb64=uid token=token %}
+
+{% endautoescape %}

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>User Profile</title>
+    <style>
+        body {
+            background-color: black;
+            border: 2px solid blue;
+            display: flex;
+            align-items: stretch;
+        }
+
+        #left {
+            flex: 1;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-right: 1px solid #ccc;
+        }
+
+        #right {
+            flex: 2;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: "Tahoma";
+            color: black;
+            margin-top: 0;
+        }
+
+        h2 {
+            font-family: "Tahoma";
+            color: white;
+            -webkit-text-stroke: 1.5px black;
+            margin-bottom: 10px;
+        }
+
+         h3 {
+            font-family: "Tahoma";
+            color: midnightblue;
+            -webkit-text-stroke: .8px white;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            background-color: white;
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            font-family: "Tahoma";
+            background-color: white;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="left">
+    <h1>Welcome, {{ user.username }}!</h1>
+    <h2>Your Profile</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h3>Username: {{ user.username }}</h3>
+        <label for="bio">Bio:</label>
+        <textarea name="bio" id="bio" rows="4" cols="50">{{ bio_form.instance.bio }}</textarea>
+        <button type="submit">Save Bio</button>
+    </form>
+    <button><a href="{% url 'search_results' %}">Search</a></button>
+    <button><a href="{% url 'home' %}">Back</a></button>
+    </div>
+    <div id="right">
+        <h2>Your Favorite Movies</h2>
+        <ul>
+            {% for movie in favorite_movies %}
+                <li>
+                    {{ movie.movie_title }}
+                    <a href="{% url 'add_to_favorite' movie.movie_id movie.movie_title %}">(Remove from Favorites)</a>
+                </li>
+            {% empty %}
+                <li>No favorite movies yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const bioTextarea = document.getElementById('bio');
+        const saveBioButton = document.getElementById('save_bio');
+
+        // Load saved bio from session storage (if available)
+        const savedBio = sessionStorage.getItem('user_bio');
+        if (savedBio) {
+            bioTextarea.value = savedBio;
+        }
+
+        // Save bio to session storage when the "Save Bio" button is clicked
+        saveBioButton.addEventListener('click', function() {
+            const bioValue = bioTextarea.value;
+            sessionStorage.setItem('user_bio', bioValue);
+            alert('Bio saved successfully!');
+        });
+    });
+    </script>
+</body>
+</html>
